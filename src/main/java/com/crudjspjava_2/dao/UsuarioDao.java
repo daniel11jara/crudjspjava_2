@@ -17,9 +17,9 @@ public class UsuarioDao {
 		
 		try {
 			//passando o driver de conexao
-			Class.forName("com.mysql.cj.jdbc.Drive");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			//passando o endereço de conexao -- usuario -- senha
-			conn = DriverManager.getConnection("jdbc:mysql//localhost:3306/crusjspjava_2" , "root", "admin");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/crudjspjava_2" , "root", "admin");
 			
 		} catch (Exception e) {
 			System.out.println(e);
