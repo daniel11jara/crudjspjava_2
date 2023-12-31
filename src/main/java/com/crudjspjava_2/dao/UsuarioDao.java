@@ -29,6 +29,39 @@ public class UsuarioDao {
 		
 	}
 	
+	
+	//aula 04 - metodo para pegar o ID
+	public static Usuario getRegistroById(int id) {
+		
+		Usuario usuario = null;
+		
+		try {
+			Connection conn = getConnection();
+			PreparedStatement ps = conn.prepareStatement("select * from usuario2 where id = ?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			
+			while(rs.next()) {
+				usuario = new Usuario();
+				usuario.setId(rs.getInt("id"));
+				usuario.setNome(rs.getString("nome"));
+				usuario.setPassword(rs.getString("password"));
+				usuario.setEmail(rs.getString("email"));
+				usuario.setSexo(rs.getString("sexo"));
+				usuario.setPais(rs.getString("pais"));
+			}
+			
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return usuario;
+	}
+	
 	//aula 02 - metodo para listar os usuarios
 	public static List<Usuario> getAllUsuarios(){
 		

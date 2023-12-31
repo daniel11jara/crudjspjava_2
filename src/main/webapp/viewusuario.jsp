@@ -23,7 +23,10 @@
 	<th>Password</th>
 	<th>Email</th>
 	<th>Sexo</th>
-	<th>Pais</th></tr>
+	<th>Pais</th>
+	<th>Editar</th>
+	<th>Excluir</th>
+	</tr>
 	<c:forEach items="${list}" var="usuario">
 		<tr>
 			<td>${usuario.getId()}</td>
@@ -32,9 +35,12 @@
 			<td>${usuario.getEmail()}</td>
 			<td>${usuario.getSexo()}</td>
 			<td>${usuario.getPais()}</td>
+			<td><a href = "editform.jsp?id=${usuario.getId()}">Editar</a></td>
+			<td><a href = "#">Excluir</a></td>
 		</tr>
 	</c:forEach>
 	</table>
-
+	<br>
+	<a align = "center" href = "#">Adicionar novo usuario</a>
 </body>
 </html>
