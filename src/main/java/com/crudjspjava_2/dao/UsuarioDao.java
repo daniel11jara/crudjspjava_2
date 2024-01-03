@@ -95,5 +95,32 @@ public class UsuarioDao {
 		return list;
 		
 	}
+	
+	//aula 05 - atualizando usuario
+	public static int updateUsuario(Usuario u) {
+		int status = 0;
+		
+		try {
+			Connection con  = getConnection();
+			PreparedStatement ps = con.prepareStatement("update usuario set nome = ?, password = ?, email= ?, sexo=?, pais=?, where id=?");
+			ResultSet rs = ps.executeQuery();
+			
+			ps.setString(1, u.getNome());
+			ps.setString(2, u.getPassword());
+			ps.setString(3, u.getEmail());
+			ps.setString(4, u.getSexo());
+			ps.setString(5, u.getPais());
+			ps.setInt(6, u.getId());
+			
+			status = ps.executeUpdate();
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return status;
+	}
 
 }
