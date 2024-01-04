@@ -30,6 +30,31 @@ public class UsuarioDao {
 	}
 	
 	
+	//aula 06 - salvar usuario
+	public static int salvarUsuario(Usuario u) {
+		int status = 0;
+		
+		try {
+			Connection con = getConnection();
+			PreparedStatement ps = con.prepareStatement("insert into usuario2 (nome, password, email, sexo, pais) values (?, ?, ?, ?, ?)");
+			
+			ps.setString(1, u.getNome());
+			ps.setString(2, u.getPassword());
+			ps.setString(3, u.getEmail());
+			ps.setString(4, u.getSexo());
+			ps.setString(5, u.getPais());
+			
+			status = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return status;
+	}
+
+	
+	
 	//aula 04 - metodo para pegar o ID
 	public static Usuario getRegistroById(int id) {
 		
@@ -62,7 +87,7 @@ public class UsuarioDao {
 		return usuario;
 	}
 	
-	//aula 02 - metodo para listar os usuarios
+	//aula 02 - metodo para listar os usuarios - viewusuario.jsp
 	public static List<Usuario> getAllUsuarios(){
 		
 		List<Usuario> list = new ArrayList<Usuario>();
@@ -96,14 +121,14 @@ public class UsuarioDao {
 		
 	}
 	
-	//aula 05 - atualizando usuario
+	//aula 05 - atualizando usuario - editform.jsp
 	public static int updateUsuario(Usuario u) {
 		int status = 0;
 		
 		try {
 			Connection con  = getConnection();
-			PreparedStatement ps = con.prepareStatement("update usuario set nome = ?, password = ?, email= ?, sexo=?, pais=?, where id=?");
-			ResultSet rs = ps.executeQuery();
+			PreparedStatement ps = con.prepareStatement("update usuario2 set nome = ?, password = ?, email= ?, sexo=?, pais=?, where id=?");
+			//ResultSet rs = ps.executeQuery();
 			
 			ps.setString(1, u.getNome());
 			ps.setString(2, u.getPassword());

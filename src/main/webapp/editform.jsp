@@ -12,11 +12,12 @@
 <%
 String id  = request.getParameter("id");
 Usuario usuario = UsuarioDao.getRegistroById(Integer.parseInt(id));
+
 %>
 	
 <h1>Edicao do formulario</h1>
 
-<form action="editusuario.jsp" method = "post">
+<form action="editusuario.jsp" >
 
 <input type="hidden" name = "id" value = "<%=usuario.getId()%>"/>
 	<table>
